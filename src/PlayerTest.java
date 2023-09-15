@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 public class PlayerTest {
     @Test
     void testEquals() {
-
     }
 
     @Test
@@ -20,7 +19,10 @@ public class PlayerTest {
 
     @Test
     void testGetPosition() {
-        
+        Player player1 = new Player(null, null, 0, 0, 0, 0);
+        String[] positionOptions = { "defense", "midfield", "foward", "goalie" };
+        player1.setPosition(positionOptions[0]);
+        assertEquals("defense", player1.getPosition());
 
     }
 

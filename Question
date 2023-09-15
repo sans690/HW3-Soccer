@@ -1,34 +1,4 @@
 
-Homework 3 – Soccer Team
-1 Overview
-Sports fans everywhere like to keep track of statistics – how the individual players are performing. Here at
-UVA, the women’s soccer team is almost always nationally ranked. The goal of this homework is to write two
-classes in Java – one to represent a soccer player and another to represent the soccer team. You do not need to
-understand the sport of soccer to complete the assignment.
-2 Player Class
-You need to design and implement a soccer player class Player to encapsulate the concept of a soccer player.
-The player has the following attributes (note that you will need to give them real Java names):
-• name : String – this is the first and last name of the player
-• position : String – this can be one of four values, “defense”, “midfield”, “forward”, or “goalie” case
-insensitive
-• minutes played : int – total number of minutes played
-• goals : int – number of goals scored
-• assists : int – number of goal assists
-• shots on goal percentage – percentage of shots on target
-You will need to determine the necessary methods (constructor(s), accessors, mutators, manipulators, toString,
-equals) required for this class. Do not forget to validate inputs for all attributes as necessary.
-We will explicitly test the following in the auto-tester, and thus must follow this naming convention:
-• no argument constructor
-• constructor with the following arguments, in this order: (name : String, position : String,
-minutes_played : int, goals : int, assists : int, sog_percentage : double)
-• setName(String)
-• getName() : String
-• setPosition(String)
-• getPosition() : String
-• toString() : String which should print all the information about a player on a single line
-• equals(Object o) : boolean
-You should implement this class first and write JUnit tests to ensure the class works as expected before moving
-on to the Team class. You should have this working no later than Saturday of this week.
 3 Team Class
 You need to design and implement a soccer team class Team to encapsulate the concept of a soccer team, which
 is a collection of players. The collection of Players should be stored as an array. For this class you should have
@@ -142,3 +112,14 @@ in the code on the assignment (see above in 4). Any copied work is an Honor Code
         player1.position = positionOptions[1];
         System.out.println("The player's name is " + name);
         System.out.println("Their position is: " + position);*/
+
+
+
+
+
+            this.team = players;
+    String name;
+    double sog_average;
+    int positionCount;
+    boolean onTeam;
+    int mostGoals;
