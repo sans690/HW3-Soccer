@@ -1,0 +1,144 @@
+
+Homework 3 – Soccer Team
+1 Overview
+Sports fans everywhere like to keep track of statistics – how the individual players are performing. Here at
+UVA, the women’s soccer team is almost always nationally ranked. The goal of this homework is to write two
+classes in Java – one to represent a soccer player and another to represent the soccer team. You do not need to
+understand the sport of soccer to complete the assignment.
+2 Player Class
+You need to design and implement a soccer player class Player to encapsulate the concept of a soccer player.
+The player has the following attributes (note that you will need to give them real Java names):
+• name : String – this is the first and last name of the player
+• position : String – this can be one of four values, “defense”, “midfield”, “forward”, or “goalie” case
+insensitive
+• minutes played : int – total number of minutes played
+• goals : int – number of goals scored
+• assists : int – number of goal assists
+• shots on goal percentage – percentage of shots on target
+You will need to determine the necessary methods (constructor(s), accessors, mutators, manipulators, toString,
+equals) required for this class. Do not forget to validate inputs for all attributes as necessary.
+We will explicitly test the following in the auto-tester, and thus must follow this naming convention:
+• no argument constructor
+• constructor with the following arguments, in this order: (name : String, position : String,
+minutes_played : int, goals : int, assists : int, sog_percentage : double)
+• setName(String)
+• getName() : String
+• setPosition(String)
+• getPosition() : String
+• toString() : String which should print all the information about a player on a single line
+• equals(Object o) : boolean
+You should implement this class first and write JUnit tests to ensure the class works as expected before moving
+on to the Team class. You should have this working no later than Saturday of this week.
+3 Team Class
+You need to design and implement a soccer team class Team to encapsulate the concept of a soccer team, which
+is a collection of players. The collection of Players should be stored as an array. For this class you should have
+the following methods:
+o A constructor taking an array of Player objects as its only parameter and assigning that array to the array
+data member of the class (named team), its only instance variable. Remember your deep and shallow
+copies here.
+o Accessor, mutator, and equals methods. Remember your deep and shallow copies here.
+o toString method. The output should print each player, their position, and associated statistics on a single
+line.
+o A method (SOGAverage) returning the overall shots on goal average of the team. This is calculated by
+finding the average of all the shots on goal percentages of all team members.
+o A method (positionCount) that counts the number of players on the team at a certain position. It takes
+one parameter (a String) that represents a position on the team. The method should count the number of
+players on the team that play that position and return the count. If no players on the team match the
+position, a 0 should be returned. The comparisons should be case insensitive. This method does not need
+to validate that the input parameter is one of the four legal positions for soccer.
+o A method (sort) returning the array of Player objects sorted in descending order using the minutes
+played as the sorting key. Remember your deep and shallow copies here. (Note that you can easily look
+up a simple sorting algorithm online.)
+o A method (onTeam) checking if a certain person (String input parameter to the method representing the
+player’s name) is on the team, based on the name of that person. If the person is on the team, the method
+returns true; otherwise, it returns false.
+o A method (mostGoals) that returns the Player that has scored the most goals on the team.
+Here is a UML diagram of the Team class:
+You may add other attributes and methods as needed, but those will not be formally tested by the auto-tester.
+Team
+- team : Player[]
++ Team(Player[] players)
++ getTeam() : Player[]
++ setTeam(Player[] players)
++ toString() : String
++ equals(Object other) : boolean
++ SOGAverage() : double
++ positionCount(String pos) : int
++ sort() : Player[]
++ onTeam(String name) : boolean
++ mostGoals() : Player
+4 Documentation
+All submitted java files should contain the following information as a comment at the top of your file:
+// Name:
+e.g. Albus Dumbledore
+// Computing ID:
+e.g. gr8wzrd@hogwarts.edu
+// Homework Name:
+e.g. HW 3 - Soccer
+// Resources used: (put none here if you did not use any)
+For the Resources, include URLs to any on-line resources where you studied or reviewed code that is specific
+to these problems, including any physical textbooks you referenced. Include any other resources that you used
+here. No need to include names of TAs or Profs that you consulted with! Equally, no need to reference course
+slides or materials that are provided for you. If you did not use any outside resources, just put “none” here.
+You may use Generative AI tools to help you with debugging your code after you have designed it. Be sure to
+cite the tool (and version) used within the resources.
+At a minimum, each class and each method within the classes should have a comment indicating their purpose.
+You can try creating Javadocs if you want, but it’s not required. For Javadocs, before the method you should
+have a comment block that looks like this:
+/** positionCount
+* @param pos is the position you are searching for
+* @return count of the number of players on the team in that position
+*/
+Javadocs begin with a /** and end with a */. The first line contains the name of the function. Every parameter
+to the method has a line beginning with @param and the name of the parameter and what it represents. If the
+function returns anything include an @return with a description of what is returned from the method. More
+information about Javadocs can be found at
+https://www.jetbrains.com/help/idea/working-with-code-documentation.html#add-new-comment.
+5 Testing
+You should write JUnit tests for your Team class to test it. You may also write a driver program if you want. A
+sample driver class is available for download and will minimally test the functionality of your classes. If you
+are looking for “real” data to input into the program, try
+https://virginiasports.com/sports/wsoc/cumestats/season/2023-24/
+FILES TO DOWNLOAD: TeamClient.java
+6 Submission and Collaboration Policy
+6.1 GradeScope
+You should submit your Player.java and Team.javafile to GradeScope. If you are having trouble with your
+submission, you should double check the following common problems:
+1. Make sure you are only submitting two (2) files, and they are called Player.java and Team.java
+exactly.
+2. Make sure that you have not copy/pasted any text from any other file (like a PDF, Word, etc.) into your
+*.java files.
+3. Make sure you use the same method headers in your code as provided above. This also means the
+names of the methods must also match (including capitalization).
+4. Make sure you remove any package statements from your code before submitting. The auto-tester
+doesn’t expect your file to be inside a package for this assignment.
+5. Make sure your functions do NOT print anything, just return the correct values, or the auto-tester will
+think your output is incorrect.
+FILES TO SUBMIT: Player.java Team.java
+6.2 Collaboration Policy for this Homework
+This assignment represents your individual work and effort. Absolutely no collaboration with anybody is
+permitted outside of lab time. Your work must represent individual effort, i.e., you must write your own code.
+Not just type it (though you need to do that too): compose it yourself, as your own original work.
+You must cite any and every source you consult, other than those explicitly provided by the course itself. If
+you work with, obtain or receive help from another source (Internet website, textbook, tutor, online video, etc.),
+nothing should be copied or retyped into the submitted solution. References must be documented in a comment
+in the code on the assignment (see above in 4). Any copied work is an Honor Code violation.
+
+
+// Player player1 = new Player();
+// String firstName = "Sarah";
+// String lastName = "Smith";
+// player1.name = firstName + ", " + lastName;
+// System.out.println(player1.name);
+// player1.position =
+
+
+
+      /* String[] firstName = { "Sarah", "Victoria", "Beth" };
+      String[] lastName = { " Smith", " Jackson", " Tanner" };
+        String[] positionOptions = { "defense", "midfield", "foward", "goalie" };
+        Player player1 = new Player();
+        player1.name = firstName[0] + lastName[0];
+        player1.position = positionOptions[1];
+        System.out.println("The player's name is " + name);
+        System.out.println("Their position is: " + position);*/
