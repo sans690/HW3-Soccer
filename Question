@@ -1,30 +1,12 @@
 
-3 Team Class
-You need to design and implement a soccer team class Team to encapsulate the concept of a soccer team, which
-is a collection of players. The collection of Players should be stored as an array. For this class you should have
-the following methods:
-o A constructor taking an array of Player objects as its only parameter and assigning that array to the array
-data member of the class (named team), its only instance variable. Remember your deep and shallow
-copies here.
-o Accessor, mutator, and equals methods. Remember your deep and shallow copies here.
-o toString method. The output should print each player, their position, and associated statistics on a single
-line.
-o A method (SOGAverage) returning the overall shots on goal average of the team. This is calculated by
-finding the average of all the shots on goal percentages of all team members.
-o A method (positionCount) that counts the number of players on the team at a certain position. It takes
-one parameter (a String) that represents a position on the team. The method should count the number of
-players on the team that play that position and return the count. If no players on the team match the
-position, a 0 should be returned. The comparisons should be case insensitive. This method does not need
-to validate that the input parameter is one of the four legal positions for soccer.
 o A method (sort) returning the array of Player objects sorted in descending order using the minutes
 played as the sorting key. Remember your deep and shallow copies here. (Note that you can easily look
 up a simple sorting algorithm online.)
+
 o A method (onTeam) checking if a certain person (String input parameter to the method representing the
 player’s name) is on the team, based on the name of that person. If the person is on the team, the method
 returns true; otherwise, it returns false.
-o A method (mostGoals) that returns the Player that has scored the most goals on the team.
-Here is a UML diagram of the Team class:
-You may add other attributes and methods as needed, but those will not be formally tested by the auto-tester.
+
 Team
 - team : Player[]
 + Team(Player[] players)
@@ -93,33 +75,3 @@ You must cite any and every source you consult, other than those explicitly prov
 you work with, obtain or receive help from another source (Internet website, textbook, tutor, online video, etc.),
 nothing should be copied or retyped into the submitted solution. References must be documented in a comment
 in the code on the assignment (see above in 4). Any copied work is an Honor Code violation.
-
-
-// Player player1 = new Player();
-// String firstName = "Sarah";
-// String lastName = "Smith";
-// player1.name = firstName + ", " + lastName;
-// System.out.println(player1.name);
-// player1.position =
-
-
-
-      /* String[] firstName = { "Sarah", "Victoria", "Beth" };
-      String[] lastName = { " Smith", " Jackson", " Tanner" };
-        String[] positionOptions = { "defense", "midfield", "foward", "goalie" };
-        Player player1 = new Player();
-        player1.name = firstName[0] + lastName[0];
-        player1.position = positionOptions[1];
-        System.out.println("The player's name is " + name);
-        System.out.println("Their position is: " + position);*/
-
-
-
-
-
-            this.team = players;
-    String name;
-    double sog_average;
-    int positionCount;
-    boolean onTeam;
-    int mostGoals;
