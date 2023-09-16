@@ -2,10 +2,10 @@ import java.util.Arrays;
 
 public class Team {
     // the osbjects in array player are given to the array team
-    Player[] team = {};
+    Player[] team;
     // init of team name
     String teamName;
-    static double SOGAverage;
+    double SOGAverage;
     int positionCount;
     boolean onTeam;
 
@@ -17,6 +17,18 @@ public class Team {
     public Team(Player[] players) {
         // the class team arguement passes in team array
         this.team = players;
+
+    }
+
+    /**
+     * @param sOGAverage the sOGAverage to set
+     */
+    public void setSOGAverage() {
+        int totalGoals = 0;
+        for (Player player : team) {
+            totalGoals += player.getGoals();
+            this.SOGAverage = totalGoals / team.length;
+        }
     }
 
     /**
@@ -24,13 +36,6 @@ public class Team {
      */
     public double getSOGAverage() {
         return SOGAverage;
-    }
-
-    /**
-     * @param sOGAverage the sOGAverage to set
-     */
-    public void setSOGAverage(double sOGAverage) {
-        this.SOGAverage = team[0].getGoals() * team[1].getGoals()* team[2].getGoals() * team[3].getGoals() / 4;
     }
 
     /**
@@ -93,10 +98,13 @@ public class Team {
         player4.setGoals(20);
         player4.setAssists(13);
         player4.setSog_percentage(60.0);
-
         Player[] players = { player1, player2, player3, player4 };
         System.out.println(Arrays.toString(players));
-        System.out.println(SOGAverage);
+        System.out.println(Arrays.toString(players));
+        Team team = new Team(players);
+        team.setSOGAverage();
+        System.out.println("The average SOG is: " + team.getSOGAverage());
+
     }
 
 }
