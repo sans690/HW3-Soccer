@@ -1,187 +1,203 @@
-import java.util.Arrays;
+// Name: Saniyah Smith
+// Computing ID: xjk8nm@hogwarts.edu
+// Assignment Name: HW3
 
-public class Team extends Player {
-    // the objects in Player are given to the array team
+import java.util.Arrays;
+import java.util.Comparator;
+
+// class Team
+public class Team {
     // init of variables
+    // for team array it has Player objects
     Player[] team;
     double SOGAverage;
     int positionCount;
+    String name;
 
-    /**
-     * @param targetPosition
-     * @return the positionCount
-     */
-    public int getPositionCount(String targetPosition) {
-        return positionCount;
-    }
-
-    /**
-     * @param positionCount the positionCount to set
-     */
-    public void setPositionCount(int positionCount) {
-        this.positionCount = positionCount;
-    }
-
-    public void onTeam() {
-
-    }
-
-    // if (player.name.equals(result)) {
-    // System.out.println("worked");
-    // }
-    // else{System.out.println("failed");}
-
-    // }
-    // return result;
-
-    public Player mostGoals() {
-        int highestNum = -1;
-        Player mostPlayerGoals = null;
-        for (Player player : team) {
-            if (player.getGoals() > highestNum)
-                highestNum = player.getGoals();
-            mostPlayerGoals = player;
-        }
-        return mostPlayerGoals;
-    }
-
-    // empty constructor Team
+    // empty constructor
     public Team() {
     }
 
-    // constructor that holds parameter of an array
+    // Team with argument of Player objects
     public Team(Player[] players) {
-
-        // the class team arguement passes in players array
-        this.team = players;
+        // for the class, the value that should be assigned is a copy of the objects in
+        // Player to the length of it and not any farther
+        this.team = Arrays.copyOf(players, players.length);
     }
 
-    /**
-     * @return the positionCount
-     */
-
-    public int positionCount(String targetPosition) {
-        int count = 0;
-        // for currrent Player object in team
-        for (Player player : team) {
-            // if players' position is not nothing and players' position is equal to
-            // targetPosition, add to the count
-            if (player.getPosition() != null && player.getPosition().equalsIgnoreCase(targetPosition)) {
-                count = count + 1;
-
-            }
-        }
-
-        return count;
-
+    // Accessor
+    // sets name
+    public void setName(String Name) {
+        this.name = name;
     }
 
-    /**
-     * @param sOGAverage the sOGAverage to set
-     */
-    public void setSOGAverage() {
-        // init and declaration or totalGoals
-        int totalGoals = 0;
-        // for current Player object in team
-        for (Player player : team) {
-            // totalGoals equals player's goals sum
-            totalGoals += player.getGoals();
-            // the average of which is calculated by dividing the total goals by the number
-            // of players on the team
-            this.SOGAverage = (double) totalGoals / team.length;
-        }
+    // Accessor
+    // sets the team with copy of values in Player
+    public void setTeam(Player[] players) {
+        this.team = Arrays.copyOf(players, players.length);
     }
 
-    /**
-     * @return the sOGAverage
-     */
-    public double getSOGAverage() {
-        return SOGAverage;
-    }
-
-    /**
-     * @return the team
-     */
+    // Mutator
+    // return true or false depending on the player status
     public Player[] getTeam() {
         return team;
     }
 
-    /**
-     * @param team the team to set
-     */
-    public void setTeam(Player[] team) {
-        this.team = team;
+    // method that gets the status of whether or not a player is on a team
+    // for Player objects in team, if the object's getname equals (ignore case) the
+    // taken players argument that is found by getName, then return true, else
+    // return false
+    public boolean onTeam(String randomPersonToCheckStatus) {
+        for (Player p : team) {
+
+            if (p.getName().equalsIgnoreCase(randomPersonToCheckStatus)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // method sort with Player type, objects of Player in sortedPlayers equals a
+    // copy
+    // of the team, to the length of team, no farther
+    public Player[] sort() {
+        Player[] sortedPlayers = Arrays.copyOf(team, team.length);
+        // sortedPlayers compares int and goes in descending order
+        Arrays.sort(sortedPlayers, Comparator.comparingInt(Player::getMinutes_played).reversed());
+        // printing
+        System.out.println(sortedPlayers.length);
+        // a return of the sort
+        return sortedPlayers;
+
+    }
+
+    // Accessor
+    // sets the SOG average, no return
+    public void setSOGAverage() {
+        this.SOGAverage = SOGAverage;
+    }
+
+    // Mutator
+    // returns the SOG average
+    public double getSOGAverage() {
+        return SOGAverage;
+    }
+
+    // A method (SOGAverage) returning the overall shots on goal average of the
+    // team. This is calculated by
+    // finding the average of all the shots on goal percentages of all team members.
+    public double SOGAverage() { // declaration and init
+        if (team.length == 0) {
+            return 0.0;
+        }
+
+        double totalSog_Percentage = 0.0;
+
+        // for objects of Player in team
+        for (
+
+        Player p : team) {
+            totalSog_Percentage += p.getSog_percentage();
+        }
+        // retunr the totalSOG divided by the team (instance of Player class).length
+        return totalSog_Percentage / team.length;
+    }
+
+    // Accessor
+    // sets the position count
+    public void setPositionCount(int positionCount) {
+        this.positionCount = positionCount;
+    }
+
+    // Mutator
+    // returns the position count
+    public int getPositionCount() {
+        return positionCount;
+    }
+
+    // method that takes a string argument and returns an int
+    public int positionCount(String targetPosition) {
+        // declaration and init of count
+        int count = 0;
+        // for objects of Player in team, if player's position is not null and player's
+        // position is equal (ignores case) to the target position, then increase count
+        // by 1 and hold that value
+        // if no players in that position it will return 0
+        for (Player p : team) {
+            if (p.getPosition() != null && p.getPosition().equalsIgnoreCase(targetPosition)) {
+                count = count + 1;
+            }
+        }
+        return count;
+    }
+
+    // method that calculates who has the most goals, returns result
+    public Player mostGoals() {
+        // init and declaration of largest num
+        int highestNum = -1;
+        // mostPlayerGoals gets type Player and declares it to be null
+        Player mostPlayerGoals = null;
+        // for Player objects in team
+        for (Player p : team) {
+            // if the player's getGoals is higher than the declared value in highest num,
+            // set the mostPlayerGoals as the current player,
+            if (p.getGoals() > highestNum)
+                highestNum = p.getGoals();
+            mostPlayerGoals = p;
+        }
+
+        return mostPlayerGoals;
+
     }
 
     @Override
-    // Override of equals method returns new assignment
     public boolean equals(Object obj) {
-        // TODO Auto-generated method stub
         return super.equals(obj);
     }
 
     public static void main(String[] args) {
-        // arrays that hold values
+
+        // creation of the arrays
         String[] firstName = { "Sarah", "Victoria", "Beth", "Megan" };
         String[] lastName = { "Smith", "Jackson", "Tanner", "Williams" };
         String[] positionOptions = { "defense", "midfield", "forward", "goalie" };
 
-        // creation on new Player instance, player1, has parameter
-        Player player1 = new Player(null, null, 0, 0, 0,
-                0);
-        // player1's setName is equal to index of these arrays
-        player1.setName(firstName[0] + lastName[0]);
-        // player1's setPosition is equal to array to index
-        player1.setPosition(positionOptions[0]);
-        // gives player1's setMinutes_played an int
-        player1.setMinutes_played(60);
-        // gives player1's setGoals an int
-        player1.setGoals(4);
-        // gives player1's setAssists an int
-        player1.setAssists(8);
-        // gives player1's setSog_percentage an double
-        player1.setSog_percentage(5.0);
+        Player player1 = new Player(firstName[0] + lastName[0], positionOptions[0], 60, 4, 8, 0.20);
+        Player player2 = new Player(firstName[1] + lastName[1], positionOptions[1], 100, 10, 1, 0.10);
+        Player player3 = new Player(firstName[2] + lastName[2], positionOptions[2], 120, 2, 0, 0.10);
+        Player player4 = new Player(firstName[3] + lastName[3], positionOptions[3], 80, 20, 13, 0.5);
+        // Setting the different players into an array with the Player type
+        Player[] playerArray = { player1, player2, player3, player4 };
 
-        // repeat of prior steps just on a diffrent instance
-        Player player2 = new Player(null, null, 0, 0, 0,
-                0);
-        player2.setName(firstName[1] + lastName[1]);
-        player2.setPosition(positionOptions[1]);
-        player2.setMinutes_played(100);
-        player2.setGoals(10);
-        player2.setAssists(1);
-        player2.setSog_percentage(30.0);
+        // creating a new instance of Team with argument players
+        Team team = new Team(playerArray);
+        // prints array list
+        System.out.println(Arrays.toString(playerArray));
 
-        Player player3 = new Player(null, null, 0, 0, 0,
-                0);
-        player3.setName(firstName[2] + lastName[2]);
-        player3.setPosition(positionOptions[2]);
-        player3.setMinutes_played(120);
-        player3.setGoals(2);
-        player3.setAssists(0);
-        player3.setSog_percentage(1.0);
-
-        Player player4 = new Player(null, null, 0, 0, 0,
-                0);
-        player4.setName(firstName[3] + lastName[3]);
-        player4.setPosition(positionOptions[3]);
-        player4.setMinutes_played(80);
-        player4.setGoals(20);
-        player4.setAssists(13);
-        player4.setSog_percentage(60.0);
-        Player[] players = { player1, player2, player3, player4 };
-        System.out.println(Arrays.toString(players));
-        // team is an array of Player
-        Team team = new Team(players);
-        team.setSOGAverage();
-        System.out.println("The average SOG is: " + team.getSOGAverage());
+        // all this is either printing, setting of values
+        double result = team.SOGAverage();
+        System.out.println("The average SOG is: " + result);
         String targetPosition = "forward";
-        // count the target
+        team.getTeam();
         int positionCount = team.positionCount(targetPosition);
         System.out.println("There are " + positionCount + " in position " + targetPosition + ".");
-        Player result = team.mostGoals();
-        System.out.println(result);
+        Player goals = team.mostGoals();
+        System.out.println(goals);
+        // Person that is not on team
+        Player randomPersonToCheckStatus = new Player("Ben Macky", "goalie", 0, 0, 0, 0);
+        // if the person on the team, after onTeam method has checked with the instance,
+        // print on team statement
+        if (team.onTeam(randomPersonToCheckStatus.getName())) {
+            System.out.println("They are on the team!");
+            // if false, print this statement
+        } else if (!team.onTeam(randomPersonToCheckStatus.getName())) {
+            System.out.println("They are not on the team!");
+
+        }
 
     }
-
 }
+
+// ChatGPT, OpenAI, Sep 18 2023, chat.openai.com. Helped with sort method
+// operation, error with SOGAverage
