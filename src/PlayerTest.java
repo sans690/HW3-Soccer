@@ -20,7 +20,7 @@ public class PlayerTest {
     @Test
     void testGetPosition() {
         Player player1 = new Player(null, null, 0, 0, 0, 0);
-        String[] positionOptions = { "defense", "midfield", "foward", "goalie" };
+        String[] positionOptions = { "defense", "midfield", "forward", "goalie" };
         player1.setPosition(positionOptions[0]);
         assertEquals("defense", player1.getPosition());
 
@@ -38,6 +38,7 @@ public class PlayerTest {
 
     @Test
     void testSetPosition() {
+        
 
     }
 
@@ -45,5 +46,5 @@ public class PlayerTest {
     void testToString() {
 
     }
-    
+
 }

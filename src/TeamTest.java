@@ -38,4 +38,9 @@ public class TeamTest {
     void testGetTeam() {
 
     }
+
+    @Test
+    void testGetName() {
+        
+    }
 }
